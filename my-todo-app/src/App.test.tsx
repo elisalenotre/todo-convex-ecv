@@ -8,7 +8,7 @@ describe('App', () => {
     expect(screen.getByText(/To-Do List/i)).toBeInTheDocument();
   });
 
-  it('adds a new task when input is filled and button is clicked', async () => {
+  it('nouvelle tâche quand le bouton est cliqué', async () => {
     render(<App />);
     const input = screen.getByPlaceholderText('Ajouter une tâche');
     const button = screen.getByText('Ajouter');
@@ -19,21 +19,21 @@ describe('App', () => {
     expect(await screen.findByText('New Task')).toBeInTheDocument();
   });
 
-  it('filters tasks by status when filter buttons are clicked', async () => {
+  it('filtrer les tâches par status quand le bouton filtre est cliqué', async () => {
     render(<App />);
     const todoButton = screen.getByText('Toutes');
     fireEvent.click(todoButton);
     expect(screen.getByText('Toutes')).toBeInTheDocument();
   });
 
-  it('updates the status of a task when a new status is selected', async () => {
+  it('mise à jour des status quand un nouveau status est sélectionné', async () => {
     render(<App />);
     const select = screen.getByDisplayValue('todo') as HTMLSelectElement;
     fireEvent.change(select, { target: { value: 'done' } });
     expect(select.value).toBe('done');
   });
 
-  it('deletes a task when delete button is clicked', async () => {
+  it('suppression de la tâche quand le bouton supprimé est cliqué', async () => {
     render(<App />);
     const deleteButton = screen.getByText('Supprimer');
     fireEvent.click(deleteButton);
