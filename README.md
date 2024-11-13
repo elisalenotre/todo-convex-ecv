@@ -1,6 +1,6 @@
 # My To-Do App
 
-Ce projet est une application de gestion de tâches (To-Do List) construite avec **React**, **Convex (serverless)** et **TypeScript**. L'application permet de créer, afficher, modifier et supprimer des tâches avec un statut de `todo`, `in progress` ou `done`.
+Ce projet est une application de gestion de tâches (To-Do List) construite avec **React**, **Convex (serverless)** et **TypeScript**. L'application permet de créer, afficher, modifier et supprimer des tâches avec un statut de `à faire`, `en cours` ou `terminé`.
 
 ## Prérequis
 
@@ -15,30 +15,29 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés sur 
 1. Clonez ce dépôt :
 
    ```bash
-   git clone https://github.com/votre-utilisateur/my-todo-app.git
+   git clone https://github.com/elisalenotre/my-todo-app.git
    cd my-todo-app
-
+   
 2. Installez les dépendances avec npm :
 
- ```bash
+   ```bash
    npm install
 
 3. Configurez Convex :
 
- ```bash
+   ```bash
    npx convex dev --once --configure=new
 
-## Installation
+## Tests
 
 Pour exécuter les tests:
 
- ```bash
-   npm test
-
-
+    ```bash
+      npm test
+      
 ## Déploiement
 
-Une fois que vous avez terminé le développement local, vous pouvez déployer votre projet avec Convex en utilisant le CLI :
+Vous pouvez déployer votre projet avec Convex en utilisant le CLI
 
  ```bash
    npx convex deploy
