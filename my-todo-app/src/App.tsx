@@ -1,8 +1,19 @@
 import { useQuery, useMutation } from "convex/react";
 import { api } from "../convex/_generated/api";
-import { JSXElementConstructor, Key, ReactElement, ReactNode, ReactPortal, useState } from "react";
+import { useState } from "react";
+import AuthPage from "./AuthPage";
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const handleAuthSuccess = () => {
+    setIsAuthenticated(true);
+  };
+
+  if (!isAuthenticated) {
+    return <AuthPage onAuthSuccess={handleAuthSuccess} />;
+  }
+
   const tasks = useQuery(api.tasks.getAllTasks) || [];
   const addTask = useMutation(api.tasks.addTask);
   const updateTaskStatus = useMutation(api.tasks.updateTaskStatus);
@@ -17,7 +28,7 @@ function App() {
     }
   };
 
-  const filteredTasks = tasks.filter((task: { status: string; }) => {
+  const filteredTasks = tasks.filter((task: { status: string }) => {
     if (filter === "all") return true;
     return task.status === filter;
   });
@@ -39,22 +50,20 @@ function App() {
         <button onClick={() => setFilter("done")}>Terminées</button>
       </div>
       <div className="tasks">
-        {filteredTasks.map((task: { _id: Key | null | undefined; text: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; status: string | number | readonly string[] | undefined; }) => (
+        {filteredTasks.map((task: { _id: string; text: string; status: string }) => (
           <div key={task._id}>
             <span>{task.text}</span>
             <select
               value={task.status}
               onChange={(e) => {
-                if (task._id) {
-                  updateTaskStatus({ taskId: task._id as string, status: e.target.value });
-                }
+                updateTaskStatus({ taskId: task._id, status: e.target.value });
               }}
             >
               <option value="todo">À faire</option>
               <option value="in-progress">En cours</option>
               <option value="done">Terminée</option>
             </select>
-            <button onClick={() => task._id && deleteTask({ taskId: task._id as string })}>Supprimer</button>
+            <button onClick={() => deleteTask({ taskId: task._id })}>Supprimer</button>
           </div>
         ))}
       </div>
