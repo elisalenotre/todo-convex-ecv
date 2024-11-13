@@ -1,5 +1,5 @@
 import { v } from "convex/values";
-import { query, mutation } from "../_generated/server";
+import { query, mutation } from "./_generated/server";
 
 export const getAllTasks = query({
   args: {},
@@ -25,8 +25,6 @@ export const updateTaskStatus = mutation({
     const taskId = ctx.db.normalizeId("tasks", args.taskId);
     if (taskId) {
       await ctx.db.patch(taskId, { status: args.status });
-    } else {
-      throw new Error("Invalid taskId");
     }
   },
 });
@@ -37,8 +35,6 @@ export const deleteTask = mutation({
     const taskId = ctx.db.normalizeId("tasks", args.taskId);
     if (taskId) {
       await ctx.db.delete(taskId);
-    } else {
-      throw new Error("Invalid taskId");
     }
   },
 });
