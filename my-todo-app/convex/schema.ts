@@ -7,9 +7,4 @@ export default defineSchema({
     status: v.string(),
     createdAt: v.number(),
   }),
-  users: defineTable({
-    email: v.string(),
-    passwordHash: v.string(),
-    createdAt: v.number(),
-  }),
 });
