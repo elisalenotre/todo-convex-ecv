@@ -28,6 +28,9 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  padding: 0 1.6em;
+  margin: 30px auto;
+  justify-content: center;
 }
 
 h1 {
@@ -45,13 +48,45 @@ button {
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
+  margin: 5px;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: black;
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+div.tasks {
+  display: center;
+  justify-self: center;
+  width: 100%;
+  margin: 3px;
+}
+
+select {
+  border-radius: 8px;
+  border: 1px solid rgb(184, 184, 184);
+  padding: 0.6em 1em;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  margin: 3px;
+}
+
+span {
+  font-weight: 500;
+  margin: auto 0.5em;
+}
+
+input {
+  border-radius: 8px;
+  border: 1px solid rgb(184, 184, 184);
+  padding: 0.6em 1em;
+  font-family: inherit;
+  transition: border-color 0.25s;
+  margin: 3px;
 }
 
 @media (prefers-color-scheme: light) {
